@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rum+Raisin&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Rum+Raisin&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.4.4/math.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="bg"></div><!-- Este div crea el efecto de fondo animado -->
+    <div class="slideshow-container">
+
+        <div class="mySlides fade"> <!--portada-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Universidad Nacional Autónoma de México</p>
+                    <p>Facultad de Estudios Superiores Acatlán</p>
+                </div>
+                <div class="subtitle">
+                    <p>División de Matemáticas e Ingenierías</p>
+                    <p>Matemáticas Aplicadas y Computación</p>
+                    <P>Esencia y Práctica de los Métodos Numéricos</P>
+                    <P>Garrido Vázquez Fernanda</P>
+                    <p>Hernández Espinoza Gabriel Emanuel</p>
+                    <p>Martinez García Roberto</p>
+                </div>
+                <div class="frase">
+                    <P>"No hay rama de la matemática, por abstracta que sea, que no pueda aplicarse algún día a la realidad." </P>
+                </div>
+                <img src="escudo.png" alt="escudo unam" class="unam">
+                <img src="escudofes.png" alt="escudo fes" class="fes">
+            </div>
+        </div>
+    
+        <div class="mySlides fade"><!--introduccion-->
+            <div class="fondo">
+                <div class="title">Introdución</div>
+                <div class="info">
+                    <p> Los métodos numéricos son una herramienta esencial en el arsenal del científico y el ingeniero modernos. Cuando nos enfrentamos a problemas matemáticos complejos, ya sea en física, ingeniería, economía u otras disciplinas, a menudo no podemos obtener soluciones exactas mediante métodos analíticos tradicionales. Aquí es donde entran en juego los métodos numéricos.
+
+                        Estos métodos nos permiten aproximarnos a soluciones precisas mediante cálculos computacionales. En lugar de depender únicamente de manipulaciones algebraicas o análisis matemático, recurrimos a algoritmos diseñados para iterar y mejorar continuamente nuestras aproximaciones. Esto es crucial en situaciones donde las ecuaciones son demasiado complejas para resolverlas directamente o cuando los conjuntos de datos son demasiado grandes para ser procesados manualmente.
+                    </p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="mySlides fade"> <!--opciones de mi menu-->
+            <div class="fondo">
+                <div class="title">
+                    <p> Menú</p>
+                </div>
+                <div class="info" >
+                    <ul>
+                        <p>UNIDAD 1</p>
+                        <li><a onclick="currentSlide(4)">Método del Punto Fijo</a></li>
+                        <li><a onclick="currentSlide(5)">Ejemplo 1</a></li>
+                        <li><a onclick="currentSlide(7)">Método de Newton - Raphson</a></li>
+                        <li><a onclick="currentSlide(9)">Ejemplo 1</a></li>
+                        <p>UNIDAD 2</p>
+                        <li><a onclick="currentSlide(11)">Método de Lagrange</a></li>
+                        <li><a onclick="currentSlide(12)">Ejemplo 1</a></li>
+                        <li><a onclick="currentSlide(14)">Método de Diferencias Divididas</a></li>
+                        <li><a onclick="currentSlide(16)">Ejemplo 1</a></li>
+                        <li><a onclick="currentSlide(18)">Método de Newton - Hacia Delante</a></li>
+                        <li><a onclick="currentSlide(19)">Ejemplo 1</a></li>
+                        <li><a onclick="currentSlide(21)">Método de Newton - Hacia Atrás</a></li>
+                        <li><a onclick="currentSlide(22)">Ejemplo 1</a></li>
+                        <li><a onclick="currentSlide(24)">Método de Mínimos Cuadrados</a></li>
+                        <li><a onclick="currentSlide(25)">Ejemplo 1</a></li>
+                        <p>UNIDAD 3</p>
+                        <li><a onclick="currentSlide(27)">Método del Trapecio</a></li>
+                        <li><a onclick="currentSlide(28)">Ejemplo 1</a></li>
+                        <li><a onclick="currentSlide(30)">Método de Simpson 1/3</a></li>
+                        <li><a onclick="currentSlide(31)">Ejemplo 1</a></li>
+                        <li><a onclick="currentSlide(33)">Método de Simpson 3/8</a></li>
+                        <li><a onclick="currentSlide(34)">Ejemplo 1</a></li>
+                    </ul>                      
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade" > <!--punto fijo-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método del Punto Fijo</p>
+                </div>
+                <div class="info">
+                    <p>El método del punto fijo es un algoritmo utilizado para encontrar las soluciones de una ecuación no lineal f(x)= 0 
+                        .Funciona transformando la ecuación original en una forma equivalente g(x)= x, donde g(x) es una función conocida como la "función de iteración".
+                        El proceso iterativo implica comenzar con una suposición inicial x<sub>0</sub> y luego aplicar repetidamente la función g(x) a esta suposición para 
+                        obtener una secuencia de valores x<sub>1</sub>,x<sub>2</sub>,x<sub>3</sub>,...,x<sub>n</sub>, Se espera que esta secuencia converja hacia la solución real de la ecuación original.
+                        La convergencia del método del punto fijo depende de la elección de la función g(x) y de la condición inicial x<sub>0</sub>, Si la función de iteración g(x) cumple con ciertas 
+                        condiciones, como ser una función continua y tener una derivada acotada, y si x<sub>0</sub> está lo suficientemente cerca de la solución, entonces el método del punto fijo puede 
+                        converger hacia la solución de la ecuación original.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--punto fijo 1 -->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método del Punto Fijo</p>
+                </div>
+                <div class="frase">
+                    <p>ejemplo 1</p>
+                </div>
+                <div class="info">
+                    <p>Se presentará un ejemplo en el que considrando la siguiente función:<br> <strong style="color: rgb(148, 69, 55);">f(x)=x<sup>3</sup>-4x<sup>2</sup>-10
+                    </strong><br>en el intervalo:<br><strong style="color:rgb(148, 69, 55);">[1,2]</strong><br>con la iteración del método de punto fijo se quiere encontrar la raíz, se considera:
+                    <br> <strong style="color: rgb(148, 69, 55);">x<sub>0</sub>=1.5.</strong><br>Suponiendo que se elije: 
+                    <br>
+                    <strong style="color: rgb(148, 69, 55);">x<sub>n+1</sub>=x<sub>n</sub>- [<sup>x<sub>n<sup>3</sup></sub>+4x<sub>n<sup>2</sup></sub> -10</sup>
+                    /<sub>8x<sub>n</sub>+3x<sub>n<sup>2</sup></sub></sub>]</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"> <!--Punto Fijo iteraciones-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método del Punto Fijo</p>
+                </div>
+                <div class="title">
+                    <p><strong style="color: rgb(67, 66, 68);">x<sub>n+1</sub>=x<sub>n</sub>- [<sup>x<sub>n<sup>3</sup></sub>+4x<sub>n<sup>2</sup></sub> -10</sup>
+                        /<sub>8x<sub>n</sub>+3x<sub>n<sup>2</sup></sub></sub>]</strong></p>
+                </div>
+                <div class="info">
+                    <label for="maxIteraciones">Número máximo de iteraciones:</label>
+                    <input type="number" id="maxIteracionesInput">
+                    <button onclick="calcularRaiz()">Calcular Raíz</button>
+                    <div class="responsive-table-wrapper"> <!-- Añadido un contenedor para hacer scroll horizontal -->
+                        <div id="tablaResultados" class="responsive-table">
+                            <!-- Aquí se insertarán las tablas -->
+                        </div>
+                    </div>
+                    <script src="metodoPuntoFijo.js"></script>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mySlides fade"><!--newton-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Newton Raphson</p>
+                </div>
+                <div class="info">
+                    <p>El método de Newton-Raphson es una técnica iterativa utilizada para encontrar las raíces de una función. Se basa en 
+                        la idea de aproximarse a la raíz de la función mediante una sucesión de estimaciones cada vez más precisas. En cada 
+                        paso, el método utiliza la tangente a la curva de la función en el punto de estimación actual para calcular una mejor 
+                        aproximación de la raíz. Este proceso se repite hasta alcanzar una precisión deseada o hasta que se cumpla algún criterio 
+                        de convergencia. El método de Newton-Raphson es rápido y eficiente, pero su convergencia puede no estar garantizada en 
+                        todos los casos y puede requerir una buena estimación inicial para funcionar correctamente.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--newton pasos-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Newton Raphson</p>
+                </div>
+                <div class="info">
+                    <p>Para este método seguiremos los siguientes pasos:</p>
+                    <p>1. Escoge un valor de x inicial.
+                        Este valor es una estimación en donde 
+                        esperamos que haya una raíz.<br>
+                        2.Encuentra el valor de la función usando el valor de x del paso 1.<br>
+                        3.Encuentra el valor de la derivada de la función usando el valor de x del paso 1.<br>
+                        4.Usa los valores encontrados para actualizar la estimación de la raíz mediante la siguiente fórmula:<br>
+                        x<sub>n+1</sub>=x<sub>r</sub>-<sup>f(x<sub>r</sub>)</sup>/<sub>f'(x<sub>r</sub></sub>)<br>
+                        5.Repite los pasos 2-4 hasta que la estimación de la raíz converja a un valor preciso.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--newton ejemplo-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Newton Raphson</p>
+                </div>
+                <div class="frase">
+                    <p>ejemplo 1</p>
+                </div>
+                <div class="info">
+                    <p>Para este ejemplo tenemos la ecuación:<br><strong style="color: rgb(161, 40, 40);">
+                        x<sup>3</sup>-2x+1</strong><br>Calculando la derivada tenemos:<br>
+                        <strong style="color: rgb(173, 74, 74);">f'(x)=3x<sup>2</sup>-2</strong>
+                    </p>
+                    <label for="valor_inicial">Valor inicial:</label>
+                    <input type="number" id="valor_inicialInput" step="any">
+                    <button onclick="guardarValor()">Guardar</button>
+                    <p id="valorGuardado"></p>
+                    <script src="NewtonR.js"></script>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--newton iteraccion1-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Newton Raphson</p>
+                </div>
+                <div class="title">
+                    <p><strong style="color: rgb(85, 83, 83);">
+                        x<sup>3</sup>-2x+1</strong><br></p>
+                </div>
+                <div class="info">
+                    <p><strong style="color: rgb(119, 81, 255);">f'(x)=3x<sup>2</sup>-2</strong>
+                        <strong style="color: rgb(119, 81, 255);" id="valorGuardado2"></strong>
+                    </p>
+                    <label for="max_iterations">Número máximo de iteraciones:</label>
+                    <input type="number" id="max_iterationsInput">
+                    <button onclick="calcularRaizNR()">Calcular Raíz</button>
+                    <div class="responsive-table-wrapper"> <!-- Añadido un contenedor para hacer scroll horizontal -->
+                        <div id="resultadonr" class="responsive-table">
+                            <!-- Aquí se insertarán las tablas -->
+                        </div>
+                    </div>
+                    <script src="NewtonR.js"></script>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--lagrange-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Lagrange</p>
+                </div>
+                <div class="info">
+                    <p>La interpolación permite el cálculo de valores intermedios de datos experimentales
+                        que no tiene una función conocida que los represente. La interpolación polinomial 
+                        consiste en determinar un polinomio de orden n que ajusta a n+1 datos. La interpolación
+                        de Lagrange es una de las alternativas que existen.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--lagrange-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Lagrange</p>
+                </div>
+                <div class="frase">
+                    <p>ejemplo 1</p>
+                </div>
+                <div class="info">
+                    <p>Para este ejemplo tenemos la siguiente tabla:
+                    </p>
+                    <table>
+                        <tr>
+                            <th>n</th>
+                            <th>x</th>
+                            <th>y</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>4</td>
+                            <td>1.39</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>6</td>
+                            <td>1.79</td>
+                        </tr>
+                    </table>
+
+                    <script src="lagrange.js"></script>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--lagrange-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Lagrange</p>
+                </div>
+                <div class="frase">
+                    <p>ejemplo 1</p>
+                </div>
+                <div class="info">
+                    <table>
+                        <tr>
+                            <th>n</th>
+                            <th>x</th>
+                            <th>y</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>4</td>
+                            <td>1.39</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>6</td>
+                            <td>1.79</td>
+                        </tr>
+                    </table>
+                    <br>
+                    <strong style="color: rgb(161, 72, 72);">L<sub>n</sub>(x)=<sup>(x-x<sub>n+1</sub>)(x-x<sub>n+2</sub>)</sup>/<sub>(x<sub>n</sub>-x<sub>1</sub>)(x<sub>n</sub>-x<sub>n+1</sub>)</sub></strong>
+                    <br>
+                    <br>
+                    <button onclick="calcularLagrange()">Calcular Polinomio</button>
+                    <strong style="color: rgb(99, 96, 96);"><p id="resultadolagrange"></p> </strong> 
+                    <strong style="color: rgb(82, 80, 80);"><p id="resultadosimplificado"></p> </strong> 
+                    <script src="lagrange.js"></script>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--diferenciasd-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Diferencias Divididas</p>
+                </div>
+                <div class="info">
+                    <p>
+                        El método de diferencias divididas es una técnica fundamental 
+                        en el campo de la interpolación y el análisis numérico. Se utiliza 
+                        para aproximar polinomios que pasan a través de un conjunto de puntos 
+                        dados. La idea básica es dividir la diferencia entre los valores de 
+                        los puntos en intervalos sucesivos y utilizar estas diferencias para 
+                        construir un polinomio interpolante.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--diferenciasd-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Diferencias Divididas</p>
+                </div>
+                <div class="info">
+                    <p>
+                        Para este método se sigue lo siguiente: La n-ésima diferencia dividida finita es:
+                        <br>
+                        <br>
+                        <img src="diferenciasdivididas.png" alt="difdiv">
+                        <br>
+                        <br>
+                        Para lo cual se debe interpretar la tabla de diferencias 
+                        divididas, también como una aproximación a una derivada:
+                        <br>
+                        <br>
+                        <table>
+                            <tr>
+                                <th>i</th>
+                                <th>x<sub>i</sub></th>
+                                <th>f[x<sub>i</sub>]</th>
+                                <th>Primero</th>
+                                <th>Segundo</th>
+                                <th>Tercero</th>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>x<sub>0</sub></td>
+                                <td>f[x<sub>0</sub>]</td>
+                                <td>f[x<sub>1</sub>,x<sub>0</sub>]</td>
+                                <td>f[x<sub>2</sub>,x<sub>1</sub>,x<sub>0</sub>]</td>
+                                <td>f[x<sub>3</sub>,x<sub>2</sub>,x<sub>1</sub>,x<sub>0</sub>]</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>x<sub>1</sub></td>
+                                <td>f[x<sub>1</sub>]</td>
+                                <td>f[x<sub>2</sub>,x<sub>1</sub>]</td>
+                                <td>f[x<sub>3</sub>,x<sub>2</sub>,x<sub>1</sub>]</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>x<sub>2</sub></td>
+                                <td>f[x<sub>2</sub>]</td>
+                                <td>f[x<sub>3</sub>,x<sub>2</sub>]</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>x<sub>3</sub></td>
+                                <td>f[x<sub>3</sub>]</td>
+                            </tr>
+                        </table>
+                        <br>
+                        En la fórmula del polinomio, las diferencias divididas 
+                        sirven para evaluar los coeficientes de cada término adicional 
+                        para aumentar el grado. 
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--diferenciasdejemplo-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Diferencias Divididas</p>
+                </div>
+                <div class="frase">
+                    <p>ejemplo 1</p>
+                </div>
+                <div class="info">
+                    <p>
+                        Para el ejercicio, es importante notar que las 
+                        distancias entre puntos para el «eje x» NO son equidistantes.
+                        <br>
+                        <strong style="color: rgb(115, 158, 140);">Se dispone de los datos (x, f(x)), en donde 
+                            x es un valor de inversión y f(x) es un valor de ganancia, ambos en miles de dólares:
+                        </strong>
+                        <table>
+                            <tr>
+                                <th>Inversión</th>
+                                <th>Ganancia</th>
+                            </tr>
+                            <tr>
+                                <td>3.2</td>
+                                <td>5.12</td>
+                            </tr>
+                            <tr>
+                                <td>3.8</td>
+                                <td>6.42</td>
+                            </tr>
+                            <tr>
+                                <td>4.2</td>
+                                <td>7.25</td>
+                            </tr>
+                            <tr>
+                                <td>4.5</td>
+                                <td>6.85</td>
+                            </tr>
+                        </table>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--difdiv1-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Diferencias Divididas</p>
+                </div>
+                <div class="frase">
+                    <p>ejemplo 1</p>
+                </div>
+                <div class="info">
+                    <p>
+                        <table>
+                            <tr>
+                                <th>Inversión</th>
+                                <th>Ganancia</th>
+                            </tr>
+                            <tr>
+                                <td>3.2</td>
+                                <td>5.12</td>
+                            </tr>
+                            <tr>
+                                <td>3.8</td>
+                                <td>6.42</td>
+                            </tr>
+                            <tr>
+                                <td>4.2</td>
+                                <td>7.25</td>
+                            </tr>
+                            <tr>
+                                <td>4.5</td>
+                                <td>6.85</td>
+                            </tr>
+                        </table>
+                        <button onclick="calcularTabla()">Calcular Polinomio</button>
+                        <br>
+                        <div id="outputTable"></div>
+                        <div id="outputPolinomio"></div>                 
+                    </p>
+                    <script src="diferencias.js"></script>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--neton adelante-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Newton - Hacia Delante</p>
+                </div>
+                <div class="info">
+                    <p>
+                        El método de Newton hacia adelante es una técnica de interpolación 
+                        numérica que estima valores intermedios en una serie de datos utilizando 
+                        un polinomio de interpolación. Se basa en diferencias finitas para 
+                        calcular los coeficientes del polinomio, lo que permite aproximar una 
+                        función desconocida. Es especialmente útil cuando los puntos de datos 
+                        están igualmente espaciados.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--neton adelante ejemp-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Newton - Hacia Adelante</p>
+                </div>
+                <div class="frase">
+                    <p>ejemplo</p>
+                </div>
+                <div class="info">
+                    <p>
+                        Para este método se utilizará el siguiente ejemplo:
+                        <table>
+                            <tr>
+                                <th>x</th>
+                                <th>f(x<sub>i</sub>)</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td><sup>2</sup>/<sub>3</sub></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>-1</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>0</td>
+                            </tr>
+                        </table>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--neton adel eje-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Newton - Hacia Adelante</p>
+                </div>
+                <div class="info">
+                    <p>
+                        <img src="nha.png">
+                        <br>
+                        <br>
+                        <center>
+                            <img src="tri.png" alt="Triángulo" width="200" height="200">
+                        </center>
+                        <br>
+                        <br>
+                        <div id="outputdelante"></div>
+                    </p>
+                    <script src="newtondelante.js"></script>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--neton atras-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Newton - Hacia Atrás</p>
+                </div>
+                <div class="info">
+                    <p>
+                        En esencia, el método de Newton hacia atrás sigue el mismo 
+                        principio que el método de Newton hacia adelante, pero 
+                        comienza desde el punto final del conjunto de datos y se 
+                        mueve hacia atrás. Esto significa que se utiliza la misma fórmula 
+                        de diferencias divididas de Newton, pero con los valores de 
+                        x y y organizados de manera inversa. Al igual que su contraparte 
+                        hacia adelante, este método es útil para aproximar una función 
+                        desconocida o suave a partir de un conjunto discreto de puntos de 
+                        datos conocidos. Se utiliza en diversas áreas como interpolación 
+                        numérica, análisis de datos y aproximación de funciones.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--neton atr ejemp-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Newton - Hacia Atrás</p>
+                </div>
+                <div class="frase">
+                    <p>ejemplo</p>
+                </div>
+                <div class="info">
+                    <p>
+                        Para este método se utilizará el mismo ejemplo:
+                        <table>
+                            <tr>
+                                <th>x</th>
+                                <th>f(x<sub>i</sub>)</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td><sup>2</sup>/<sub>3</sub></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>-1</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>0</td>
+                            </tr>
+                        </table>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--neton atra-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Newton - Hacia Atrás</p>
+                </div>
+                <div class="frase">
+                    <p>ejemplo</p>
+                </div>
+                <div class="info">
+                    <p>Este método comienza desde el punto final 
+                        del conjunto de datos y se mueve hacia atrás. 
+                        Esto significa que se utiliza la misma fórmula 
+                        de diferencias divididas de Newton, pero con 
+                        los valores de x y y organizados de manera inversa.
+                    </p>
+                    <center>
+                        <img src="tri2.png" width="200px" height="200px">
+                    </center>
+                    <p>
+                        <div id="outputatras"></div>
+                    </p>
+                    <script src="natras.js"></script>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--minimos cuad-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Mínimos Cuadrados</p>
+                </div>
+                <div class="info">
+                    <p>El método de mínimos cuadrados es una técnica 
+                        fundamental en el análisis estadístico y matemático
+                         que se utiliza para encontrar la "mejor" relación 
+                         entre dos conjuntos de datos. Su objetivo es encontrar 
+                         una función que minimice la suma de los cuadrados de las 
+                         diferencias entre los valores observados y los valores 
+                         predichos por la función. Este método es ampliamente 
+                         utilizado en diversos campos, como la econometría, 
+                         la ingeniería, la física y la ciencia de datos, para ajustar 
+                         modelos a datos experimentales o observacionales. La clave del 
+                         método radica en encontrar los coeficientes de la función que 
+                         minimizan la discrepancia entre los datos y la función modelada, 
+                         lo que proporciona una manera eficaz de estimar relaciones y 
+                         hacer predicciones.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--minimos cuad-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Mínimos Cuadrados</p>
+                </div>
+                <div class="frase">
+                    <p>ejemplo</p>
+                </div>
+                <div class="info">
+                    <p>
+                        En este método utilizaremos el siguiente ejemplo:
+                        Calcule la recta de regresión para mínimos cuadrados
+                        para los siguienets valores:
+                        <table>
+                            <tr>
+                                <th>x</th>
+                                <th>y</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>7</td>
+                            </tr>
+                        </table>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade">
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Mínimos Cuadrados</p>
+                </div>
+                <div class="frase">
+                    <p>ejemplo</p>
+                </div>
+                <div class="info">
+                    <center>
+                        <button onclick="calcularMinimosCuadrados()">Calcular Minimos Cuadrados</button>
+                    </center>
+                    <br>
+                    <div class="responsive-table-wrapper"> <!-- Añadido un contenedor para hacer scroll horizontal -->
+                        <div id="minimosTabla" class="responsive-table">
+                            <!-- Aquí se insertarán las tablas -->
+                        </div>
+                    </div>
+                    <div id="resultados"></div>
+                    <script src="minimoscuadrados.js"></script>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--trapecio-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método del Trapecio</p>
+                </div>
+                <div class="info">
+                    <p>El método del trapecio es una técnica de 
+                        integración numérica que se utiliza para 
+                        aproximar el valor de una integral definida. 
+                        La idea principal detrás de este método es 
+                        dividir el área bajo una curva en múltiples 
+                        trapecios, cuyas áreas son más fáciles de calcular. 
+                        Luego, sumamos estas áreas para obtener una 
+                        aproximación del área total bajo la curva. Para aplicar 
+                        el método del trapecio, primero dividimos el intervalo de 
+                        integración en subintervalos igualmente espaciados. Llamamos 
+                        a la longitud de cada subintervalo "h". Luego, aproximamos 
+                        la integral en cada subintervalo utilizando la fórmula del 
+                        área de un trapecio.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--trapeciopendiente-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método del Trapecio</p>
+                </div>
+                <div class="frase">
+                    <p>ejemplo</p>
+                </div>
+                <div class="info">
+                    <p>
+                        Para este método tenemos el siguiente ejemplo:
+                        <table>
+                            <tr>
+                                <th>x</th>
+                                <th>f(x)</th>
+                            </tr>
+                            <tr>
+                                <td>1.000</td>
+                                <td>1.000</td>
+                            </tr>
+                            <tr>
+                                <td>2.000</td>
+                                <td>0.500</td>
+                            </tr>
+                            <tr>
+                                <td>3.000</td>
+                                <td>0.333</td>
+                            </tr>
+                            <tr>
+                                <td>4.000</td>
+                                <td>0.250</td>
+                            </tr>
+                            <tr>
+                                <td>5.000</td>
+                                <td>0.200</td>
+                            </tr>
+                        </table>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--trapeciopendiente-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método del Trapecio</p>
+                </div>
+                <div class="frase">
+                    <p>ejemplo</p>
+                </div>
+                <div class="info">
+                    <p>
+                        <center>
+                            <button onclick="calcularTrapecio()">Calcular</button>
+                        </center>
+                    </p>
+                    <div id="tablatrapecio"></div>
+                    <div id="resultadoIntegral"></div>
+                    <div id="desarrolloIntegral"></div>
+                    <script src="trapecio.js"></script>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--simpson 1/3-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Simpson 1/3</p>
+                </div>
+                <div class="info">
+                    <p>
+                        El método de Simpson 1/3 es una técnica de 
+                        integración numérica utilizada para aproximar 
+                        el valor de una integral definida. Se basa en 
+                        la idea de aproximar la curva de la función 
+                        mediante segmentos de parábolas, utilizando puntos
+                        específicos dentro del intervalo de integración. 
+                        La regla 1/3 se refiere a la aproximación de la 
+                        integral mediante la evaluación de la función en 
+                        dos puntos extremos y uno medio dentro de cada 
+                        subintervalo, y luego aplicando una fórmula que 
+                        involucra estos puntos para calcular el área bajo 
+                        la curva. Este método es una mejora sobre la regla 
+                        del trapecio, ya que utiliza polinomios de segundo 
+                        grado para una mejor aproximación en ciertos casos.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--simpson 1/3-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Simpson 1/3</p>
+                </div>
+                <div class="frase">
+                    <p>ejemplo</p>
+                </div>
+                <div class="info">
+                    <p>
+                        Para este método utilizaremos el siguiente ejemplo:
+                        <table>
+                            <tr>
+                                <th>x</th>
+                                <th>f(x)</th>
+                            </tr>
+                            <tr>
+                                <td>1.000</td>
+                                <td>1.000</td>
+                            </tr>
+                            <tr>
+                                <td>2.000</td>
+                                <td>0.500</td>
+                            </tr>
+                            <tr>
+                                <td>3.000</td>
+                                <td>0.333</td>
+                            </tr>
+                            <tr>
+                                <td>4.000</td>
+                                <td>0.250</td>
+                            </tr>
+                            <tr>
+                                <td>5.000</td>
+                                <td>0.200</td>
+                            </tr>
+                        </table>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--simpson 1/3-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Simpson 1/3</p>
+                </div>
+                <div class="frase">
+                    <p>ejemplo</p>
+                </div>
+                <div class="info">
+                    <center>
+                        <button onclick="calcularSimpson()">Calcular </button>
+                    </center>
+                    <br>
+                    <div class="responsive-table-wrapper"> <!-- Añadido un contenedor para hacer scroll horizontal -->
+                        <div id="simpsontercio" class="responsive-table">
+                            <!-- Aquí se insertarán las tablas -->
+                        </div>
+                    </div>
+                    <div id="resultadountercio"></div> <!-- Aquí se mostrará el resultado -->
+                    <script src="simpsontercio.js"></script>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--simpson 3/8-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Simpson 3/8</p>
+                </div>
+                <div class="info">
+                    <p>
+                        El método de Simpson 3/8 se diferencia del método de Simpson 
+                        1/3 en que utiliza tres puntos equidistantes para cada 
+                        subintervalo en lugar de dos. Esto da como resultado una 
+                        mayor precisión en la aproximación.El proceso de aplicación 
+                        del método de Simpson 3/8 implica dividir el intervalo de integración
+                        en subintervalos, calcular los valores de la función en los extremos 
+                        y en dos puntos adicionales dentro de cada subintervalo, y luego aplicar 
+                        la fórmula de Simpson 3/8 para obtener la aproximación de la integral.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--simpson 3/8-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Simpson 3/8</p>
+                </div>
+                <div class="frase">
+                    <p>ejemplo</p>
+                </div>
+                <div class="info">
+                    <p>
+                        Para este método utilizaremos el siguiente ejemplo:
+                        <table>
+                            <tr>
+                                <th>n</th>
+                                <th>x</th>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>1.000</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>1.6667</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>2.3333</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>3.0000</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>3.6667</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>4.3333</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>5.0000</td>
+                            </tr>
+                        </table>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mySlides fade"><!--simpson 3/8-->
+            <div class="fondo">
+                <div class="title">
+                    <p>Método de Simpson 3/8</p>
+                </div>
+                <div class="frase">
+                    <p>ejemplo</p>
+                </div>
+                <div class="info">
+                    <div class="responsive-table-wrapper"> <!-- Añadido un contenedor para hacer scroll horizontal -->
+                        <div id="tablatresoctavos" class="responsive-table">
+                            <!-- Aquí se insertarán las tablas -->
+                        </div>
+                    </div>
+                    <script src="simpsontresoctavos.js"></script>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+    <br>
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span> 
+      <span class="dot" onclick="currentSlide(2)"></span> 
+      <span class="dot" onclick="currentSlide(3)"></span> 
+      <span class="dot" onclick="currentSlide(4)"></span>
+      <span class="dot" onclick="currentSlide(5)"></span>
+      <span class="dot" onclick="currentSlide(6)"></span>
+      <span class="dot" onclick="currentSlide(7)"></span>
+      <span class="dot" onclick="currentSlide(8)"></span>
+      <span class="dot" onclick="currentSlide(9)"></span>
+      <span class="dot" onclick="currentSlide(10)"></span>
+      <span class="dot" onclick="currentSlide(11)"></span>
+      <span class="dot" onclick="currentSlide(12)"></span>
+      <span class="dot" onclick="currentSlide(13)"></span>
+      <span class="dot" onclick="currentSlide(14)"></span>
+      <span class="dot" onclick="currentSlide(15)"></span>
+      <span class="dot" onclick="currentSlide(16)"></span>
+      <span class="dot" onclick="currentSlide(17)"></span>
+      <span class="dot" onclick="currentSlide(18)"></span>
+      <span class="dot" onclick="currentSlide(19)"></span>
+      <span class="dot" onclick="currentSlide(20)"></span>
+      <span class="dot" onclick="currentSlide(21)"></span>
+      <span class="dot" onclick="currentSlide(22)"></span>
+      <span class="dot" onclick="currentSlide(23)"></span>
+      <span class="dot" onclick="currentSlide(24)"></span>
+      <span class="dot" onclick="currentSlide(25)"></span>
+      <span class="dot" onclick="currentSlide(26)"></span>
+      <span class="dot" onclick="currentSlide(27)"></span>
+      <span class="dot" onclick="currentSlide(28)"></span>
+      <span class="dot" onclick="currentSlide(29)"></span>
+      <span class="dot" onclick="currentSlide(30)"></span>
+      <span class="dot" onclick="currentSlide(31)"></span>
+      <span class="dot" onclick="currentSlide(32)"></span>
+      <span class="dot" onclick="currentSlide(33)"></span>
+      <span class="dot" onclick="currentSlide(34)"></span>
+      <span class="dot" onclick="currentSlide(35)"></span>
+    </div>
+
+<script src="codigo.js"></script>
+</body>
+</html>
